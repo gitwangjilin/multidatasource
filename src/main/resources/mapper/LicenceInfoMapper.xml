@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.redshield.licence.licmgr.mapper.LicenceInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wjl.multidatasource.multidatasource.entity.LicenceInfo">
+        <result column="businessSerial" property="businessSerial"/>
+        <result column="mobileIdentify" property="mobileIdentify"/>
+        <result column="companyName" property="companyName"/>
+        <result column="orgCode" property="orgCode"/>
+        <result column="licAuthId" property="licAuthId"/>
+        <result column="appLicenceNum" property="appLicenceNum"/>
+        <result column="licenceSn" property="licenceSn"/>
+        <result column="appAccessId" property="appAccessId"/>
+        <result column="createTime" property="createTime"/>
+        <result column="holderEncryptNum" property="holderEncryptNum"/>
+        <result column="holderCardNum" property="holderCardNum"/>
+        <result column="holderCardType" property="holderCardType"/>
+        <result column="holderName" property="holderName"/>
+        <result column="holderRole" property="holderRole"/>
+        <result column="areaCode" property="areaCode"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        businessSerial, mobileIdentify, companyName, orgCode, licAuthId, appLicenceNum, licenceSn, appAccessId, createTime, holderEncryptNum, holderCardNum, holderCardType, holderName, holderRole, areaCode
+    </sql>
+    <!--通过实体作为筛选条件查询-->
+    <select id="getList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from NEWAPP.licence_info
+        <where>
+            <if test="businessSerial != null and businessSerial != ''">
+                and businessSerial = #{businessSerial}
+            </if>
+            <if test="mobileIdentify != null and mobileIdentify != ''">
+                and mobileIdentify = #{mobileIdentify}
+            </if>
+            <if test="companyName != null and companyName != ''">
+                and companyName = #{companyName}
+            </if>
+            <if test="orgCode != null and orgCode != ''">
+                and orgCode = #{orgCode}
+            </if>
+            <if test="licAuthId != null and licAuthId != ''">
+                and licAuthId = #{licAuthId}
+            </if>
+            <if test="appLicenceNum != null and appLicenceNum != ''">
+                and appLicenceNum = #{appLicenceNum}
+            </if>
+            <if test="licenceSn != null and licenceSn != ''">
+                and licenceSn = #{licenceSn}
+            </if>
+            <if test="appAccessId != null and appAccessId != ''">
+                and appAccessId = #{appAccessId}
+            </if>
+            <if test="holderEncryptNum != null and holderEncryptNum != ''">
+                and holderEncryptNum = #{holderEncryptNum}
+            </if>
+            <if test="holderCardNum != null and holderCardNum != ''">
+                and holderCardNum = #{holderCardNum}
+            </if>
+            <if test="holderCardType != null and holderCardType != ''">
+                and holderCardType = #{holderCardType}
+            </if>
+            <if test="holderName != null and holderName != ''">
+                and holderName = #{holderName}
+            </if>
+            <if test="holderRole != null and holderRole != ''">
+                and holderRole = #{holderRole}
+            </if>
+            <if test="areaCode != null and areaCode != ''">
+                and areaCode = #{areaCode}
+            </if>
+        </where>
+    </select>
+
+
+    <!--查询单个-->
+    <select id="getById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from NEWAPP.licence_info
+        where businessSerial = #{businessSerial}
+    </select>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from NEWAPP.licence_info where businessSerial = #{businessSerial}
+    </delete>
+
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into NEWAPP.licence_info(businessSerial, mobileIdentify, companyName, orgCode,
+        licAuthId, appLicenceNum, licenceSn, appAccessId, createTime,
+        holderEncryptNum, holderCardNum, holderCardType, holderName, holderRole, areaCode)
+        values (
+        #{businessSerial},
+        #{mobileIdentify},
+        #{companyName},
+        #{orgCode},
+        #{licAuthId},
+        #{appLicenceNum},
+        #{licenceSn},
+        #{appAccessId},
+        #{createTime},
+        #{holderEncryptNum},
+        #{holderCardNum},
+        #{holderCardType},
+        #{holderName},
+        #{holderRole},
+        #{areaCode})
+    </insert>
+
+    <!--TODO 通过主键修改数据-->
+    <update id="update">
+        update NEWAPP.licence_info
+        <set>
+            <if test="businessSerial != null and businessSerial != ''">
+                businessSerial = #{businessSerial},
+            </if>
+            <if test="mobileIdentify != null and mobileIdentify != ''">
+                mobileIdentify = #{mobileIdentify},
+            </if>
+            <if test="companyName != null and companyName != ''">
+                companyName = #{companyName},
+            </if>
+            <if test="orgCode != null and orgCode != ''">
+                orgCode = #{orgCode},
+            </if>
+            <if test="licAuthId != null and licAuthId != ''">
+                licAuthId = #{licAuthId},
+            </if>
+            <if test="appLicenceNum != null and appLicenceNum != ''">
+                appLicenceNum = #{appLicenceNum},
+            </if>
+            <if test="companyType != null and companyType != ''">
+                companyType = #{companyType},
+            </if>
+            <if test="licTelephone != null and licTelephone != ''">
+                licTelephone = #{licTelephone},
+            </if>
+            <if test="publicKey != null and publicKey != ''">
+                publicKey = #{publicKey},
+            </if>
+            <if test="licenceEntity != null">
+                licenceEntity = #{licenceEntity},
+            </if>
+            <if test="licenceSn != null and licenceSn != ''">
+                licenceSn = #{licenceSn},
+            </if>
+            <if test="appAccessId != null and appAccessId != ''">
+                appAccessId = #{appAccessId},
+            </if>
+            <if test="createTime != null and createTime != ''">
+                createTime = #{createTime},
+            </if>
+            <if test="holderEncryptNum != null and holderEncryptNum != ''">
+                holderEncryptNum = #{holderEncryptNum},
+            </if>
+            <if test="holderCardNum != null and holderCardNum != ''">
+                holderCardNum = #{holderCardNum},
+            </if>
+            <if test="holderCardType != null and holderCardType != ''">
+                holderCardType = #{holderCardType},
+            </if>
+            <if test="holderName != null and holderName != ''">
+                holderName = #{holderName},
+            </if>
+            <if test="holderRole != null and holderRole != ''">
+                holderRole = #{holderRole},
+            </if>
+            <if test="areaCode != null and areaCode != ''">
+                areaCode = #{areaCode},
+            </if>
+        </set>
+        where businessSerial = #{businessSerial}
+    </update>
+
+    <delete id="deleteByLicenceSn">
+        delete from NEWAPP.licence_info where licenceSn = #{licenceSn}
+    </delete>
+
+    <select id="selectByAppLicenceNum" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from NEWAPP.licence_info
+        where appLicenceNum = #{appLicenceNum} and areaCode = #{areaCode}
+    </select>
+
+    <!--根据sn获取一条数据-->
+    <select id="getLicenceInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from NEWAPP.licence_info
+        where licenceSn = #{licenceSn} limit 1
+    </select>
+
+
+    <select id="getSuperSn" resultMap="BaseResultMap">
+        select c.licenceSn as licenceSn from (
+        select a.licenceSn,a.createTime from licence_info a where a.licAuthId = #{licAuthId}
+        union
+        select b.licenceSn,b.createTime from licence_history b where b.licAuthId = #{licAuthId})c
+        order by c.createTime desc
+    </select>
+
+    <select id="getLicInfo" resultType="com.redshield.licence.licmgr.entity.LicenceInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from NEWAPP.licence_info
+        where orgCode = #{orgCode}
+    </select>
+
+    <select id="getLicInfoByOrgCode" resultType="com.redshield.licence.licmgr.entity.LicenceInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from NEWAPP.licence_info
+        where
+        left(licAuthId,2)='PI'
+        and orgCode = #{orgCode}
+        and areaCode = #{areaCode}
+    </select>
+
+    <select id="getLicenceInfoAuth" resultType="com.redshield.licence.licmgr.entity.LicenceInfo">
+        select appAccessId,holderName,holderRole,createTime
+        from licence_info where
+        and orgCode = #{orgCode}
+        and areaCode = #{areaCode}
+    </select>
+
+    <select id="getLicenceInfoByAuthId" resultType="com.redshield.licence.licmgr.entity.LicenceInfo">
+        select holderCardNum
+        from licence_info where
+        appAccessId = #{appId}
+        and licAuthId = #{authId}
+    </select>
+
+    <select id="getLicListByOrgCode" resultType="com.redshield.licence.licmgr.entity.LicenceInfo">
+        select appAccessId,holderRole,holderName,createTime
+        from licence_info where
+        orgCode = #{orgCode} order by createTime DESC
+    </select>
+
+    <select id="getHolderName" parameterType="String" resultType="com.redshield.licence.licmgr.entity.LicenceInfo">
+        select holderName from licence_info
+        where licAuthId = #{authId} and areaCode = #{areaCode}
+    </select>
+
+
+</mapper>

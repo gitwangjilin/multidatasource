@@ -1,0 +1,19 @@
+server:
+  port: 8090
+spring:
+  # 数据库配置
+  datasource:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://192.168.99.36:5236
+    username: NEWAPP
+    password: cntrust123
+    hikari:
+      minimum-idle: 200
+      maximum-pool-size: 500
+      connection-timeout: 30000
+mybatis:
+  # 实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.redshield.licence.licmgr.entity
+  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
+  # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
